@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Cuidemos a la Madre Tierra!</title>
+    <style>
+        body {
+            font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+            background-color: #e0f7fa;
+            color: #2e7d32;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #1b5e20;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #37474f;
+        }
+        #contenedor-juego {
+            background-color: #ffffff;
+            border: 8px solid #81c784;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+        }
+        #pantalla-tierra {
+            font-size: 100px;
+            margin: 20px 0;
+            transition: transform 0.3s;
+        }
+        .animar {
+            transform: scale(1.2);
+        }
+        .banco-botones {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .boton-accion {
+            font-size: 2rem;
+            background-color: #a5d6a7;
+            border: none;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .boton-accion:hover {
+            background-color: #81c784;
+        }
+        .boton-accion:active {
+            transform: scale(0.9);
+        }
+        #mensaje {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            min-height: 40px;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¡Cuidemos a la Madre Tierra! 🌍</h1>
+    <p>Toca los botones para hacer feliz al planeta.</p>
+
+    <div id="contenedor-juego">
+        <!-- El planeta cambia de estado emocional según lo que haga el niño -->
+        <div id="pantalla-tierra">🌍</div>
+        
+        <div id="mensaje">¡El planeta está feliz y sano!</div>
+
+        <div class="banco-botones">
+            <button class="boton-accion" onclick="accionar('regando')" title="Regar plantas">💧</button>
+            <button class="boton-accion" onclick="accionar('reciclando')" title="Reciclar basura">♻️</button>
+            <button class="boton-accion" onclick="accionar('sembrando')" title="Plantar un árbol">🌱</button>
+            <button class="boton-accion" onclick="accionar('limpiando')" title="Limpiar el humo">☀️</button>
+        </div>
+    </div>
+
+    <script>
+        function accionar(tipo) {
+            const tierra = document.getElementById('pantalla-tierra');
+            const mensaje = document.getElementById('mensaje');
+
+            // Animación de rebote al tocar un botón
+            tierra.classList.add('animar');
+            setTimeout(() => tierra.classList.remove('animar'), 300);
+
+            // Lógica simple para niños pequeños
+            if (tipo === 'regando') {
+                tierra.innerText = '🌻';
+                mensaje.innerText = '¡Gracias por darme agua! ¡Las flores crecen!';
+            } else if (tipo === 'reciclando') {
+                tierra.innerText = '✨🌍✨';
+                mensaje.innerText = '¡Llimpio y brillante! Separaste la basura.';
+            } else if (tipo === 'sembrando') {
+                tierra.innerText = '🌳';
+                mensaje.innerText = '¡Un nuevo árbol nos da aire limpio!';
+            } else if (tipo === 'limpiando') {
+                tierra.innerText = '☀️';
+                mensaje.innerText = '¡Apagaste las luces que no usabas!';
+            }
+
+            // El planeta regresa a su estado normal después de 4 segundos
+            setTimeout(() => {
+                tierra.innerText = '🌍';
+                mensaje.innerText = '¿Qué más podemos hacer por la Tierra?';
+            }, 4000);
+        }
+    </script>
+
+</body>
+</html>
